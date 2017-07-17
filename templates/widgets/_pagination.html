@@ -1,0 +1,23 @@
+{% macro pagination_widget(pagination, endpoint, fragment='') %}
+{% if pagination.has_prev %}
+<a href="{{ url_for(endpoint, page=pagination.prev_num, **kwargs) }}{{ fragment }}">
+&laquo;
+</a>
+{% endif %}
+{% for p in pagination.iter_pages() %}
+    {% if p %}
+        {% if p == pagination.page %}
+        <a href="javascript:void(0);" class="current"><span>{{ p }}</span></a>
+        {% else %}
+        <a href="{{ url_for(endpoint, page = p, **kwargs) }}{{ fragment }}"><span>{{ p }}</span></a>
+        {% endif %}
+    {% else %}
+    <a href="#">&hellip;</a>
+    {% endif %}
+{% endfor %}
+{% if pagination.has_next %}
+<a href="{{ url_for(endpoint, page=pagination.next_num, **kwargs) }}{{ fragment }}">
+&raquo;
+</a>
+{% endif %}
+{% endmacro %}

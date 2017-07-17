@@ -1,0 +1,5 @@
+/logs/*
+*.pyc
+env.py
+uwsgi.ini
+

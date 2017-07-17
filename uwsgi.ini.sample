@@ -1,0 +1,14 @@
+[uwsgi]
+socket       = /tmp/uwsgi.sock
+chdir        = /var/www/flask-mvc-sample/
+master       = 1
+file         = main.py
+chmod-socket = 666
+uid          = yujiro
+gid          = yujiro
+home = /home/yujiro/.pyenv/versions/flask-mvc-sample
+module = main
+callable = app
+daemonize = /var/log/uwsgi/flask-mvc-sample.log
+log-reopen = true
+touch-logreopen=/var/www/uwsgi/uwsgi.log.trigger

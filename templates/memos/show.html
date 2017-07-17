@@ -1,0 +1,20 @@
+{% extends "layouts/default.html" %}
+{% block body %}
+{% include 'memos/widgets/_back_list.html' %}
+<h1>Detail</h1>
+<form class="form-wrapper mb20">
+  <label>Title</label>
+  <div>
+    <input readonly type="text" value="{{ memo.title | safe }}">
+  </div>
+  <label>Content</label>
+  <div>
+    <textarea readonly>{{ memo.content | safe }}</textarea>
+  </div>
+  <label>Tags</label>
+  <div>
+    <input readonly type="text" value="{{ memo.tag_str | safe }}">
+  </div>
+</form>
+<a href="/memos/{{ memo.id }}/edit">>>Edit this memo</a>
+{% endblock %}

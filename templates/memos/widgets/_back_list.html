@@ -1,0 +1,9 @@
+<div>
+  {% if request.referrer is none %}
+    <a href="/memos/">Back to list</a>
+  {% elif request.referrer.find('new') > -1 or request.referrer.find('edit') > -1 or request.referrer.find('create') > -1 or request.referrer.find('update') > -1 %}
+    <a href="/memos/">Back to list</a>
+  {% else %}
+    <a href="{{ request.referrer }}">Back to list</a>
+  {% endif %}
+</div>

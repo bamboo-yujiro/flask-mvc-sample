@@ -1,0 +1,41 @@
+{% extends "layouts/default.html" %}
+{% block body %}
+<div><a href="/">Back to top</a></div>
+<h1>{{ current_user.username }}'s memo pad</h1>
+<div class="mb20 mt10">
+  <a href="/memos/new" class="dimention-btn"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>write a memo</a>
+</div>
+{% for message in get_flashed_messages() %}
+  {{ message }}
+{% endfor %}
+{% for memo in memos.items %}
+<div class="memo-box clearfix">
+  <p><a href="/memos/{{ memo.id }}/show">{{ memo.title }}</a></p>
+  <div class="meta-box clearfix">
+    <div class="fl-left">
+      <span class="posted-date">post date : {{ memo.updated_at }}</span>
+    </div>
+    <div class="fl-right">
+      <a href="/memos/{{ memo.id }}/edit" class="mr10">Edit</a>
+      <a data-href="/memos/{{ memo.id }}/destroy" class="destroy">Delete</a>
+    </div>
+  </div>
+</div>
+{% endfor %}
+<div class="pager">
+{% import "widgets/_pagination.html" as p %}
+{{ p.pagination_widget(memos, 'MemosView:index_0') }}
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+$(function(){
+  $('.destroy').click(function(){
+    if(!confirm('Are you sure?')){
+      return false;
+    }
+    $('body').append('<form method="post" action="'+$(this).attr('data-href')+'" id="t"></form>').find('#t').submit();
+  });
+});
+</script>
+{% endblock %}
+

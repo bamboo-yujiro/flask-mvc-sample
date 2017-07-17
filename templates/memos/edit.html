@@ -1,0 +1,25 @@
+{% extends "layouts/default.html" %}
+{% block body %}
+{% include 'memos/widgets/_back_list.html' %}
+<h1>Edit memo</h1>
+{% for message in get_flashed_messages() %}
+  {{ message }}
+{% endfor %}
+<form action="/memos/{{ memo.id }}/update" method="post" class="form-wrapper">
+  {{ form.hidden_tag() }}
+  <div>{{ form.title | safe }}</div>
+  <ul class="errors">
+  {% for error in form.title.errors %}
+    <li>{{ error }}</li>
+  {% endfor %}
+  </ul>
+  <div>{{ form.content | safe }}</div>
+  <ul class="errors">
+  {% for error in form.content.errors %}
+    <li>{{ error }}</li>
+  {% endfor %}
+  </ul>
+  <div>{{ form.tag_str | safe }}</div>
+  <input type="submit" value="Edit" class="dimention-btn">
+</form>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "layouts/default.html" %}
+{% block body %}
+<h1>Your memo pad</h1>
+{% if current_user is not none %}
+<div>
+  <p>Welcome {{ current_user.username }}.</p>
+</div>
+<a href="/memos" class="dimention-btn">See memo pad</a>
+<a href="/users/logout" class="dimention-btn">Logout</a>
+{% else %}
+<a href="/users/login" class="dimention-btn">Login</a>
+<a href="/users/create" class="dimention-btn">Member registration</a>
+{% endif %}
+{% endblock %}

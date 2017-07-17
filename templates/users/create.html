@@ -1,0 +1,42 @@
+{% extends "layouts/default.html" %}
+{% block body %}
+<div><a href="/">Back to top</a></div>
+
+<h1>Member Registration</h1>
+
+<p>Please enter your desired user name and password.</p>
+{% for message in get_flashed_messages() %}
+  {{ message }}
+{% endfor %}
+<form action="/users/create" method="post" class="form-wrapper">
+  {{ form.hidden_tag() }}
+  <div>{{ form.username.label }}</div>
+  <div>{{ form.username | safe }}</div>
+  {% if form.username.errors %}
+    <ul class="errors">
+    {% for error in form.username.errors %}
+      <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  <div>{{ form.password.label }}</div>
+  <div>{{ form.password | safe }}</div>
+  {% if form.password.errors %}
+    <ul class="errors">
+    {% for error in form.password.errors %}
+      <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  <div>{{ form.confirm.label }}</div>
+  <div>{{ form.confirm | safe }}</div>
+  {% if form.confirm.errors %}
+    <ul class="errors">
+    {% for error in form.confirm.errors %}
+      <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  <div><input type="submit" value="Register" class="dimention-btn"></div>
+</form>
+{% endblock %}

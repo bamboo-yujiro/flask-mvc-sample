@@ -1,0 +1,21 @@
+{% extends "layouts/default.html" %}
+{% block body %}
+<div><a href="/">Back to top</a></div>
+<h1>Login</h1>
+{% for message in get_flashed_messages() %}
+  {{ message }}
+{% endfor %}
+<div class="form-wrapper">
+  <form action="/users/login" method="post">
+    <div>
+      <input type="text" name="username" placeholder="Please input username.">
+    </div>
+    <div>
+      <input type="password" name="password" placeholder="Please input password.">
+    </div>
+    <div>
+      <input type="submit" value="Login" class="dimention-btn">
+    </div>
+  </form>
+</div>
+{% endblock %}
