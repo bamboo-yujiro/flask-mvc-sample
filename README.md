@@ -5,8 +5,11 @@ Demo :[http://172.104.82.128/](http://172.104.82.128/)
 ## Constitution
 
 Framework : Flask 0.11.1
+
 ORM : SQLAlchemy
+
 Templete engine : jinja template
+
 Python 3.6.0
 
 ... and more, please see requirement.txt
