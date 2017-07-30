@@ -2,6 +2,8 @@
 
 Demo :[http://172.104.82.128/](http://172.104.82.128/)
 
+Description :[http://bamboo-yujiro.com/flask-mvc/](http://bamboo-yujiro.com/flask-mvc/)
+
 ## Constitution
 
 Framework : Flask 0.11.1
